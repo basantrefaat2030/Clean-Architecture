@@ -15,7 +15,10 @@ namespace Application.Interface
     {
         public void CompressFile(string sourcePath)
         {
-            
+            if (System.IO.File.Exists(sourcePath))
+            {
+                //string compressedFilePath = Path.Combine(Path.GetDirectoryName(sourcePath), $"{Path.GetFileName(filePath)}.gz");
+            }
         }
     }
 }
