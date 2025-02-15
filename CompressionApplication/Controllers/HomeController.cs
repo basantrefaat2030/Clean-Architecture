@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Application.Interface;
 using CompressionApplication.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,14 +8,19 @@ namespace CompressionApplication.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly CompressionService _compressionService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger , CompressionService compressionService)
         {
             _logger = logger;
+            _compressionService = compressionService;
         }
 
         public IActionResult Index()
         {
+            string path = "";
+            // Compress the file and overwrite it
+            _compressionService.CompressFile(path);
             return View();
         }
 
